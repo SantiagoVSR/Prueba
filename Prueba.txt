@@ -1,0 +1,37 @@
+//Prueba Bimestral
+//f(x)= x²-10
+
+//f(x)´=2x
+
+//x_(n+1)=x_n-(f(x_n))/(f´(x_n))
+
+//Metodo Newton-Raphson
+
+import scala.math._
+
+var tempPoint: Float = 0
+
+//Se toma como primer Punto el 1
+
+var p: Float = 1
+var s = 1
+
+def calculate(): Float = {
+  var fx: Float = pow(p, 2).toFloat - sqrt(10).toFloat
+  var fxPrim: Float = 2 * p
+  var expresion: Float = p - (fx / fxPrim)
+
+  println("Iteraccion " + s + " con el punto " + p)
+
+  p = expresion
+  if (p == tempPoint) return p
+
+  //Se copia el valor de p
+
+  tempPoint = p.toFloat
+  s += 1
+  calculate()
+}
+
+var result = calculate()
+println("Raiz= " + result)
